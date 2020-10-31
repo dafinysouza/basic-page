@@ -22,10 +22,10 @@
 .product-list article a {
     height: 42px;
     border-radius: 5px;
-    border: 2px solid #da552f;
+    border: 2px solid #15C3D6;
     background: none;
     margin-top: 10px;
-    color: #da552f;
+    color: #15C3D6;
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
@@ -36,7 +36,7 @@
 }
 
 .product-list article a:hover {
-    background: #da552f;
+    background: #15C3D6;
     color: #fff;
 }
 
@@ -50,7 +50,7 @@
     padding: 10px;
     border-radius: 5px;
     border: 0;
-    background: #da552f;
+    background: #15C3D6;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
