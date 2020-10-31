@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import Loading from '../../components/Loading';
 
 import './style.css';
 
 export default class Product extends Component {
     state = {
         product: {},
+        loading: true,
     };
 
     async componentDidMount() {
@@ -14,25 +16,27 @@ export default class Product extends Component {
 
         const response = await api.get(`/products/${id}`);
 
-        this.setState({ product: response.data });
+        this.setState({ product: response.data, loading: false });
     }
 
     render() {
-        const { product } = this.state;
+        const { product, loading } = this.state;
 
         return (
-            <>
-                <div className="product-info">
-                    <h1>{product.title}</h1>
-                    <p>{product.description}</p>
-                    <p>URL: <a href={product.url}>{product.url}</a></p>
-                </div>
-                <div className="back-home">
-                    <Link to={`/`}>
-                        <button>Voltar para a página inicial</button>
-                    </Link>
-                </div>
-            </>
+            loading ? <Loading /> : (
+                <>
+                    <div className="product-info">
+                        <h1>{product.title}</h1>
+                        <p>{product.description}</p>
+                        <p>URL: <a href={product.url}>{product.url}</a></p>
+                    </div>
+                    <div className="back-home">
+                        <Link to={`/`}>
+                            <button>Voltar para a página inicial</button>
+                        </Link>
+                    </div>
+                </>
+            )
         );
     }
 }
